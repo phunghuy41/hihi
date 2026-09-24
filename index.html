@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff7fa">
+  <meta name="description" content="Một góc nhỏ dành tặng những cô gái của 10B4 — 20/10.">
+  <title>20/10 · 10B4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span>
+    <div id="particles"></div>
+  </div>
+
+  <main id="app">
+    <section id="home" class="screen screen-home">
+      <div class="intro">
+        <div class="eyebrow">20 · 10 · 2026</div>
+        <h1>for the girls<br><em>of 10B4</em></h1>
+        <p class="intro-note">Có một điều nhỏ dành riêng cho bạn.</p>
+        <button id="enterBtn" class="ghost-btn" type="button">
+          <span>Tìm tên của bạn</span><span class="arrow">↓</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="nameWall" class="screen name-wall" aria-label="Danh sách tên">
+      <div class="wall-head">
+        <div>
+          <span class="mini-label">10B4 · 20/10</span>
+          <h2>Tìm tên của bạn.</h2>
+        </div>
+        <button id="searchToggle" class="icon-btn" aria-label="Tìm kiếm">⌕</button>
+      </div>
+
+      <div id="searchBox" class="search-box" hidden>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Gõ tên của bạn..." aria-label="Tìm tên">
+      </div>
+
+      <div id="nameGrid" class="name-grid"></div>
+      <p id="emptyState" class="empty" hidden>Không thấy tên này. Thử gõ lại một chút nhé.</p>
+
+      <button id="teacherEntry" class="teacher-entry" type="button">
+        <span class="teacher-mark">♡</span>
+        <span><small>Một lá thư khác</small><strong>Dành tặng cô</strong></span>
+        <span class="teacher-arrow">↗</span>
+      </button>
+      <div class="wall-footer">một điều nhỏ · nhưng là của riêng bạn</div>
+    </section>
+
+    <section id="letterView" class="screen letter-view" aria-live="polite" aria-hidden="true">
+      <button id="backBtn" class="back-btn" type="button" aria-label="Quay lại">←</button>
+      <div class="letter-scene">
+        <div class="burst" aria-hidden="true"></div>
+        <article id="letterCard" class="letter-card">
+          <div class="letter-top">
+            <span>20 / 10</span><span>10B4</span>
+          </div>
+          <div class="letter-content">
+            <p id="letterGreeting" class="letter-greeting"></p>
+            <div id="letterBody"></div>
+            <p id="letterSign" class="letter-sign">— từ một người bạn trong 10B4 ♡</p>
+          </div>
+          <div class="letter-flower" aria-hidden="true">✦</div>
+        </article>
+      </div>
+      <div id="letterHint" class="letter-hint">đọc chậm thôi nhé</div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
