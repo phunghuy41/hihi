@@ -1,0 +1,85 @@
+*{box-sizing:border-box}
+:root{
+  --bg:#fff8fb;--paper:#fffdfb;--pink:#f3a9c3;--rose:#df789e;
+  --lav:#e8ddf8;--cream:#fff1e6;--ink:#5b4650;--soft:#9b7d88;
+  --line:rgba(184,117,143,.16);
+}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;background:var(--bg);color:var(--ink);
+  font-family:"Be Vietnam Pro",system-ui,sans-serif;overflow-x:hidden;
+}
+button,input{font:inherit}
+button{color:inherit}
+.ambient{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;
+  background:radial-gradient(circle at 20% 15%,rgba(255,221,232,.8),transparent 30%),
+             radial-gradient(circle at 82% 72%,rgba(232,221,248,.7),transparent 33%),
+             linear-gradient(145deg,#fff9fb,#fff7f5 50%,#faf7ff)}
+.orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.45;animation:drift 12s ease-in-out infinite alternate}
+.orb-a{width:210px;height:210px;background:#ffd7e6;left:-70px;top:12%}
+.orb-b{width:260px;height:260px;background:#e6dbfa;right:-100px;top:42%;animation-delay:-4s}
+.orb-c{width:180px;height:180px;background:#ffe9d9;left:35%;bottom:-90px;animation-delay:-7s}
+#particles span{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(218,120,157,.35);animation:float 8s linear infinite}
+.screen{position:relative;z-index:1;min-height:100svh}
+.screen-home{display:grid;place-items:center;padding:32px 24px;text-align:center}
+.intro{transform:translateY(-3vh);animation:rise .9s ease both}
+.eyebrow,.mini-label{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--soft)}
+h1{font-family:"DM Serif Display",serif;font-size:clamp(50px,14vw,86px);font-weight:400;line-height:.9;letter-spacing:-.04em;margin:24px 0 22px}
+h1 em{color:var(--rose);font-style:italic}
+.intro-note{color:var(--soft);font-size:13px;margin:0 auto 34px}
+.ghost-btn{border:0;background:transparent;padding:13px 4px;display:inline-flex;gap:12px;align-items:center;color:var(--rose);font-size:12px;cursor:pointer}
+.ghost-btn .arrow{display:inline-block;animation:bob 1.8s ease-in-out infinite}
+.name-wall{padding:70px 20px 40px;max-width:760px;margin:auto}
+.wall-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px}
+.wall-head h2{font-family:"DM Serif Display",serif;font-size:38px;font-weight:400;letter-spacing:-.03em;margin:7px 0 0}
+.icon-btn,.back-btn{border:1px solid var(--line);background:rgba(255,255,255,.5);backdrop-filter:blur(12px);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:20px}
+.search-box{margin:0 0 18px;animation:searchIn .35s ease}
+.search-box input{width:100%;border:1px solid var(--line);outline:none;background:rgba(255,255,255,.65);border-radius:18px;padding:13px 16px;color:var(--ink);box-shadow:0 10px 35px rgba(160,108,130,.06)}
+.name-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.name-chip{position:relative;border:1px solid rgba(190,130,151,.13);background:rgba(255,255,255,.48);border-radius:18px;padding:15px 12px;text-align:left;cursor:pointer;min-height:57px;transition:transform .25s,background .25s,box-shadow .25s}
+.name-chip:hover{transform:translateY(-2px);background:rgba(255,255,255,.82);box-shadow:0 12px 28px rgba(181,113,140,.10)}
+.name-chip:active{transform:scale(.98)}
+.name-chip::after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;right:13px;top:13px;background:var(--pink);opacity:.7}
+.name-chip span{font-size:12px;font-weight:500}
+.teacher-entry{width:100%;margin-top:30px;border:1px solid rgba(190,130,151,.18);background:linear-gradient(135deg,rgba(255,246,248,.8),rgba(244,238,252,.78));border-radius:23px;padding:17px;display:grid;grid-template-columns:38px 1fr 25px;text-align:left;align-items:center;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.teacher-entry:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(170,120,150,.10)}
+.teacher-mark{font-size:24px;color:var(--rose)}
+.teacher-entry small{display:block;color:var(--soft);font-size:10px;margin-bottom:3px}
+.teacher-entry strong{font-size:13px;font-weight:600}
+.teacher-arrow{font-size:19px;color:var(--soft);text-align:right}
+.wall-footer{text-align:center;color:#b79aa5;font-size:10px;letter-spacing:.08em;margin-top:27px}
+.empty{text-align:center;color:var(--soft);font-size:12px;padding:35px 0}
+.letter-view{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:24px;visibility:hidden;opacity:0;pointer-events:none;background:rgba(255,248,251,.05);transition:opacity .5s,visibility .5s}
+.letter-view.open{visibility:visible;opacity:1;pointer-events:auto}
+.back-btn{position:absolute;left:18px;top:calc(18px + env(safe-area-inset-top));z-index:5;opacity:0;transform:translateY(-5px);transition:.5s .5s}
+.letter-view.open .back-btn{opacity:1;transform:none}
+.letter-scene{width:min(100%,560px);height:min(760px,88svh);display:grid;place-items:center;position:relative}
+.burst{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.8);opacity:0}
+.letter-view.open .burst{animation:burst 1.3s ease-out .05s both}
+.letter-card{position:relative;width:min(100%,480px);max-height:100%;overflow:auto;background:var(--paper);border:1px solid rgba(171,120,139,.12);border-radius:5px;padding:30px 27px 34px;box-shadow:0 28px 70px rgba(117,76,92,.15);opacity:0;transform:translateY(34px) scale(.88) rotate(-1deg)}
+.letter-view.open .letter-card{animation:cardOpen .95s cubic-bezier(.18,.8,.2,1) .45s forwards}
+.letter-top{display:flex;justify-content:space-between;color:#bd9ba7;font-size:9px;letter-spacing:.16em}
+.letter-content{padding:35px 5px 5px}
+.letter-greeting{font-family:"DM Serif Display",serif;font-size:27px;line-height:1.1;margin:0 0 24px;color:#634a55;opacity:0}
+.letter-greeting.show{animation:fadeUp .7s ease forwards}
+#letterBody p{font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.8;color:#6c5960;margin:0 0 18px;opacity:0;transform:translateY(10px)}
+#letterBody p.show{animation:fadeUp .65s ease forwards}
+.letter-sign{font-family:"DM Serif Display",serif;font-style:italic;color:#a27686;font-size:15px;margin-top:30px;opacity:0}
+.letter-sign.show{animation:fadeUp .7s ease forwards}
+.letter-flower{position:absolute;right:22px;bottom:15px;color:#e3a4b9;font-size:18px;transform:rotate(18deg)}
+.letter-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.15em;color:#b99ba5;opacity:0;transition:opacity .6s 2.4s}
+.letter-view.open .letter-hint{opacity:.8}
+.revealing .name-chip{transition:opacity .35s,filter .35s,transform .35s}
+.revealing .name-chip:not(.selected){opacity:.12;filter:blur(2px);transform:scale(.97)}
+.name-chip.selected{background:#fff;box-shadow:0 0 0 1px rgba(223,120,158,.2),0 15px 50px rgba(221,119,155,.18);transform:scale(1.03);z-index:2}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(-3vh)}}
+@keyframes bob{50%{transform:translateY(4px)}}
+@keyframes drift{to{transform:translate(40px,-25px) scale(1.08)}}
+@keyframes float{from{transform:translateY(105vh);opacity:0}15%{opacity:.7}to{transform:translateY(-10vh);opacity:0}}
+@keyframes searchIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes burst{0%{opacity:0;box-shadow:0 0 0 0 rgba(255,255,255,.9)}25%{opacity:1}100%{opacity:0;box-shadow:0 0 0 520px rgba(255,255,255,.75)}}
+@keyframes cardOpen{0%{opacity:0;transform:translateY(34px) scale(.88) rotate(-1deg);filter:blur(6px)}65%{opacity:1;filter:blur(0);transform:translateY(-4px) scale(1.01) rotate(.2deg)}100%{opacity:1;transform:none}}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+@media(min-width:620px){.name-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.name-wall{padding-left:28px;padding-right:28px}}
+@media(max-height:650px){.letter-card{padding-top:22px;padding-bottom:22px}.letter-content{padding-top:25px}.letter-greeting{margin-bottom:17px}.letter-card #letterBody p{font-size:14px;line-height:1.6;margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
